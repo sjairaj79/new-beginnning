@@ -1,0 +1,41 @@
+backup-config Before_COG9.2v1.0-16Oct2024
+
+configure terminal
+session-router sip-manipulation
+select manip-in-fromBTOI
+1
+show
+description (COG9.2 V1.0 specific BTOI)
+header-rule
+name DelTransportTo
+header-name To
+action manipulate
+msg-type request
+methods INVITE
+element-rule
+name DelTransportInTo
+parameter-name transport
+type uri-param
+action delete-element
+match-value tls
+done
+exit
+done
+name DelTransportFrom
+header-name From
+action manipulate
+msg-type request
+methods INVITE
+element-rule
+name DelTransportInFrom
+parameter-name transport
+type uri-param
+action delete-element
+match-value tls
+done
+exit
+done
+exit
+done
+quit
+verify-config

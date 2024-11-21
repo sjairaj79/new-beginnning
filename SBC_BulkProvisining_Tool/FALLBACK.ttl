@@ -1,0 +1,15 @@
+configure terminal
+session-router sip-manipulation
+select manip-in-fromBTOI
+1
+show
+description (COG7.2 V1.5 specific BTOI)
+header-rule
+no DelTransportTo
+1
+no DelTransportFrom
+1
+exit
+done
+quit
+verify-config
